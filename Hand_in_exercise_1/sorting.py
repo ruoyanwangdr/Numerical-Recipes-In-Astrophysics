@@ -46,13 +46,17 @@ def mergesort(array):
 
 # Define median calculator.
 def median(lst):
+    # Split the input array into two halves.
     quotient, remainder = divmod(len(lst), 2)
+    # If N is odd, then that is our median.
     if remainder:
         return mergesort(lst)[quotient]
-    return float(sum(sorted(lst)[quotient - 1:quotient + 1]) / 2)
+    # If not, we sort our array and find the two points in the middle and take the average.
+    return float(sum(mergesort(lst)[quotient - 1:quotient + 1]) / 2)
 
 # Define quantile function.
 def quantile(lst, per):
+    # If array is sorted, array[x*N] = xth percentile.
     i = int(0.01*per*len(lst))
     quant = mergesort(lst)[i]
     return quant
@@ -75,6 +79,7 @@ largest_rad_bin = largest_radial_bin(all_radii, bin_radii[1])
 def counting_galaxies_in_halo(input_bin, halo_bin):
     number = np.zeros(len(halo_bin))
     for i in range(len(halo_bin)):
+        # Find the intersection between the two sets.
         number[i] = len(list(set(input_bin) & set(halo_bin[i])))
     return number
 
