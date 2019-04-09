@@ -12,6 +12,10 @@ def central_difference(f,a,h=6.e-6):
     f   ... function to be differentiated
     a   ... value computed at x = a
     h   ... step size
+
+    The function f will be evaluated at values within the left and right of input x, then
+    the best two-point formula will involve abscissas that are chosen symmetrically on both
+    sides of x.
     """
     return (f(a + h) - f(a - h))/(2*h)
 
