@@ -21,8 +21,8 @@ def cubic_spline(x, y, N):
     Natural cubic spline is a piece-wise interpolation method with low-degree polynomials, which will prevent excessive oscillations
     and non-convergence. In this problem, we have nearly a linear log fit and the number of data points is only 5, meaning that the
     degree of polynomials will be low and the interpolation will be relatively accurate.
-
-
+    The goal of cubic spline interpolation is to get an interpolation formula that is smooth in the first derivative and continuous
+    in the second derivative, both within an interval and at its boundaries.
     """
 
     # Initial setup.
@@ -34,11 +34,17 @@ def cubic_spline(x, y, N):
     xout = np.zeros(N+2)
     yout = np.zeros(N+2)
 
-    # Define a polynomial to fit up to n orders.
+    # In case that besides the tabulated values of y_i, there are also tabulated values for the function’s second derivatives,
+    # then we can add a cubic polynomial whose second derivative varies linearly from a value dy_j/dx on the left to a value d2y_j/dx2.
+    # This will give us a continuous second derivative.
+
+    # Define a polynomial to fit up to n orders that has zeros values at x_j and x_j+1.
+    # This will prevent us from spoiling the the agreement with the tabulated functional values
+    # y_j and y_j+1 at endpoints x_j and x_j+1.
     poly_nd = (y[n-1] - y[n-2])/(x[n-1] - x[n-2]) - (y[n-2] - y[n-3])/(x[n-2] -
           x[n-3]) + (y[n-1] - y[n-3])/(x[n-1] - x[n-3])
 
-    # LU decomposition loop.
+    # Decomposition loop.
     for i in range(1, n-1):
         sigma = (x[i] - x[i-1])/(x[i+1] - x[i-1])
         P = sigma*f[i-1] + 2.
