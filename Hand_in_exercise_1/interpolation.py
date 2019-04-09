@@ -44,7 +44,7 @@ def cubic_spline(x, y, N):
     poly_nd = (y[n-1] - y[n-2])/(x[n-1] - x[n-2]) - (y[n-2] - y[n-3])/(x[n-2] -
           x[n-3]) + (y[n-1] - y[n-3])/(x[n-1] - x[n-3])
 
-    # Decomposition loop.
+    # Decomposition loop, acquired from page 121 and 122.
     for i in range(1, n-1):
         sigma = (x[i] - x[i-1])/(x[i+1] - x[i-1])
         P = sigma*f[i-1] + 2.
@@ -54,12 +54,14 @@ def cubic_spline(x, y, N):
         qn = 0.5
         un = (3./(x[n-1]-x[n-2]))*(poly_nd-(y[n-1]-y[n-2])/(x[n-1]-x[n-2]))
 
+    # Fit the curve.
     f[n-1] = (un - qn*u[n-2])/(qn*f[n-2] + 1.)
 
+    # Return the second derivative.
     for k in range(n-2, 1, -1):
         f[k] = f[k]*f[k+1] + u[k]
 
-    # Initialization ends, begin fit.
+    # Initialization ends, begin interpolaton.
     for i in range(1, N+2):
         xout[i] = x[0] + (x[n-1] - x[0])*(i-1)/(N)
 
@@ -77,7 +79,7 @@ def cubic_spline(x, y, N):
         else:
             j = k
 
-        # Apply the interpolation formula. Acquired from page 121 of the textbook.
+        # Apply the interpolation formula.
         h = x[j_plus_1] - x[j]
         A = (x[j_plus_1] - xout[i])/h
         B = (xout[i] - x[j])/h
