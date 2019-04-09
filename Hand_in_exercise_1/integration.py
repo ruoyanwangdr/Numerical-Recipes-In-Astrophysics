@@ -25,10 +25,10 @@ def midpoint(f, a, b, N):
     N     ... number steps(bigger the better but slower)
 
     This method uses rectangles to approximate the area under the curve.
-    Rectangle’s width is determined by the interval of integration.
+    Rectangle width is determined by the interval of integration.
     The interval of integration is then divided into n smaller intervals of equal lengths as step sizes increase,
     and n rectangles would used to approximate the integral; each smaller rectangle has the width of the smaller interval.
-    The rectangle’s height is the function’s value at the midpoint of its base.
+    The rectangle height is the function’s value at the midpoint of its base.
     """
 
     h = float(b-a)/N
