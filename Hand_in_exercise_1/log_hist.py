@@ -26,6 +26,7 @@ def multi_halo(n_halo):
 
     return r_halo, theta_halo, phi_halo
 
+# Save 1000 haloes for later use.
 one_thousand_haloes = multi_halo(1000)
 
 # Convert ndarrays into 1darray and bin them in 20 logarithmic spaces.
@@ -49,6 +50,7 @@ def average_number_of_satellites(bin_values, bins):
 
     return np.array(average_number)
 
+# Calculate the average number of satellites. 
 average_num_of_sat = average_number_of_satellites(bin_radii[0], bin_radii[1])
 
 # Convert the x scale of the histogram to log.
