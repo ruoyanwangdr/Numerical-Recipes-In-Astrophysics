@@ -11,6 +11,12 @@ def rejection_sampling(function, x_min, x_max, y_min, y_max, N_sample):
     [x_min, x_max]   ... range of x
     [y_min, y_max]   ... range of y
     N_sample         ... number of sample points
+
+    Sample a point on the x-axis from the proposal distribution.
+    Draw a vertical line at this x-position, up to the curve of the proposal distribution.
+    Sample uniformly along this line from 0 to the maximum of the probability density function.
+    If the sampled value is greater than the value of the desired distribution at this vertical line,
+    repeat the first step until reaching number of data points wanted.
     """
 
     # Create empty sample arrays and assign values later.
