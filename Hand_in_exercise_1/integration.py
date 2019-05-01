@@ -28,7 +28,7 @@ def midpoint(f, a, b, N):
     Rectangle width is determined by the interval of integration.
     The interval of integration is then divided into n smaller intervals of equal lengths as step sizes increase,
     and n rectangles would used to approximate the integral; each smaller rectangle has the width of the smaller interval.
-    The rectangle height is the function’s value at the midpoint of its base.
+    The rectangle height is the function value at the midpoint of its base.
     """
 
     h = float(b-a)/N

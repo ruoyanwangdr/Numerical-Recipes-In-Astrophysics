@@ -28,9 +28,9 @@ def xor_shift_64(a1=21, a2=35, a3=4, P=2**64-1, ):
 
     # Use the output of MWC as the input of XOR-shift.
     X = mwc()
-    Y = mwc()
-    Z = mwc()
-    W = mwc()
+    #Y = mwc()
+    #Z = mwc()
+    #W = mwc()
 
     # Set to 64-bit.
     bit64 = 0xffffffffffffffff
