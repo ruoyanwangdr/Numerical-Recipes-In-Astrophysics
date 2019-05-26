@@ -1,0 +1,41 @@
+\section{Prob 4. b)}
+
+The linear growth factor can be calculated indirectly from
+\begin{equation}\label{eq:1}
+    \dot D(t) = \frac{dD}{da} \dot a, 
+\end{equation}
+where $\dot a(z) = H(z)a(z)$. Plug in $\dot a(z)$ and rewrite the equation with the chain rule, \cref{eq:1} then becomes
+\begin{equation}\label{eq:2}
+    \dot D(z) = \frac{dD}{da} H(z) a(z) = \frac{dD}{da} \frac{H(z)}{1+z} = \frac{dD}{dz} \frac{dz}{da} \frac{H(z)}{1+z},
+\end{equation}
+where $a(z) = \frac{1}{1+z}$. Take the derivative of $a$ with respect of $z$, we have
+\begin{equation}
+    \frac{da}{dz} = - \frac{1}{(1+z)^2} \quad
+    \Rightarrow \quad \frac{dz}{da} = - (1+z)^2
+\end{equation}
+Thus, we can simplify \cref{eq:2} to 
+\begin{equation}\label{eq:4}
+    \dot D(z) = - \frac{dD}{dz} (1+z) H(z).
+\end{equation}
+From part a) we get the linear growth factor and the Hubble parameter as a function, 
+\begin{gather}
+    D(z) = \frac{5 \Omega_m {H_0}^2 }{2} H(z) \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz' \\
+    H(z) = (\Omega_m (1+z)^3 + \Omega_{\Lambda})^{1/2}.
+\end{gather}
+Their derivatives with respect to $z$ are then,
+\begin{gather}
+    \label{eq:7}
+    \frac{dD}{dz} = \frac{5 \Omega_m {H_0}^2 }{2} [\frac{dH(z)}{dz} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz' + H(z) \frac{d}{dz} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz'] \\ 
+    \label{eq:8}
+    \frac{dH}{dz} = \frac{3 \Omega_m (1+z)^2}{2[\Omega_m (1+z)^3 + \Omega_\Lambda]^{1/2}}.
+\end{gather}
+Substitute \cref{eq:7} and \cref{eq:8} into \cref{eq:4} and simplify, we get 
+\begin{equation}\label{eq:9}
+\begin{split}
+    \dot D(z) &= - \frac{5 \Omega_m {H_0}^2 }{2} [\frac{dH(z)}{dz} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz' + H(z) \frac{d}{dz} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz'] (1+z) H(z) \\
+    &= - \frac{5 \Omega_m {H_0}^2 }{2}  (\frac{3 \Omega_m (1+z)^2}{2[\Omega_m (1+z)^3 + \Omega_\Lambda]^{1/2}} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz' + \\
+    &\qquad \qquad \qquad \frac{(1+z)^2}{[\Omega_m (1+z)^3 + \Omega_\Lambda]^{1/2}}) \cdot (1+z) [\Omega_m (1+z)^3 + \Omega_\Lambda]^{1/2} \\
+    &= - \frac{5 \Omega_m {H_0}^2 }{2} (\frac{3 \Omega_m (1+z)^3}{2} \int_{z}^{\infty} \frac{1+z'}{H^3(z')} dz' + \frac{(1+z)^2}{[\Omega_m (1+z)^3 + \Omega_\Lambda]^{1/2}}).
+\end{split}
+\end{equation}
+\cref{eq:9} is then what we need for the time derivative of the linear growth factor $D$ as a function of the redshift $z$. 
